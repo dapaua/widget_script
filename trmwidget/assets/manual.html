@@ -1,0 +1,129 @@
+<html>
+<body>
+<strong>Now Widgets - script. (NWS)</strong><br>
+Now widgets is a collection of widgets based in the Now aesthetics. <br>
+This first widget is fully configurable and runs based on shell scripts. 
+The script language used is mksh, that is included in every android 4.0+ device. The documentation is here:<a href="https://www.mirbsd.org/htman/i386/man1/mksh.htm">mksh man page</a>
+<br>
+Some examples are included:
+<ul>
+<li>Time: A simple clock</li>
+<li>isSunday: Tells you if it is or not Sunday. Shows the use of icons.
+<li>pingtest: Tests if it can connect to the google servers</li>
+<li>battery:Shows remaining battery</li>
+<li>counter:A simple counter. Shows button and storage use</li>
+<li>launcher (4 types): A more elaborate example</li>
+</ul>
+The basics is that you create a shell script that prints the widget configuration, depending on whatever you need.
+The output should be something like this:
+<pre>
+SETLAYOUT ICON_TEXT
+SETTEXT Connection OK
+SETICON OK
+UPDATE
+REFRESH 120
+</pre>
+
+An example program (pingtest) follows
+<pre>
+#Lets you know if you have internet connection
+echo SETLAYOUT ICON_TEXT
+
+ping -c 1 www.google.com >/dev/null
+OUT=$?
+if [[ $OUT -eq 0 ]]; then
+echo SETTEXT Connection OK
+echo SETICON OK
+else
+echo SETTEXT "Can't connect"
+echo SETICON CROSS
+fi
+
+
+
+echo UPDATE
+echo REFRESH 120
+</pre>
+Pre-defined variables at the start of the script:
+<ul>
+<li>
+$NW_BATTERY ; Will contain the remaining battery, from 0 to 100.
+</li>
+<li>
+$NW_DATA_PATH ; Will contain a folder where you can write and read files. It is different for each widget and its contents are not cleared after finishing the script. Can be used as temporary folder or as long-term storage.
+</li>
+<li>
+$1 ; Will contain "REFRESH" if the script was called because a widget update is needed. Will contain "ICON1","ICON2","ICON3",...,"ICON12" if the script was called because an icon was tapped. Will contain "TEXT" if the script was called because the widget text was tapped.
+</li>
+</ul>
+There are two types of commands: pre-processed commands and run commands. Pre-processed commands are needed so NWS knows what info the script needs before running. They always start with #
+<br>List of pre -processed commands:<br>
+<ul>
+<li>#GETVAR variable deafult_value
+<br>This command sets a variable for the script from long-term storage. NWS stores this value even after restarts, so you can store settings. Example:<br>
+#GETVAR MYCOUNTER 0<br>
+This will get the $MYCOUNTER variable from storage. If it wasn't previously stored, will set it to "0"</li>
+<li>#INFO info_text<br>
+This will set the info shown in the widget chooser.Example<br>
+#INFO A simple clock.
+</li>
+</ul>
+The list of run commands is as follows. Note that run commands must be prepended by echo to be executed (ex: echo SETLAYOUT ICON) <br>
+<ul>
+<li>
+SETLAYOUT layout<br>
+Sets a layout. Possible layouts are: ICON, TEXT, 2ICON, 3ICON, 4ICON, 5ICON, 10ICON, 12ICON, ICON_TEXT, 2ICON_TEXT, ICON_TEXT_ICON. Example: <br>
+SETLAYOUT ICON
+</li>
+<li>
+SETICON icon position<br>
+Sets an icon. Included icons are: OK, CROSS ,LEFT ,RIGHT ,BLANK ,REFRESH <br>
+Possible positions are 1,2,3,4,5,6,7,8,9,10,11,12. The chosen layout must have the icon slots for them to show.<br>
+Example:<br>
+SETICON OK 1
+</li>
+<li>
+SETAPPICON app position<br>
+Sets an icon to the launcher icon for the given app. Positions are as in SETICON.
+Example<br>
+SETAPPICON com.google.android.gm 1<br>
+This sets the icon 1 to the gmail app icon
+</li>
+<li>
+RUNAPP app<br>
+Runs an app. Example:<br>
+RUNAPP com.google.android.gm<br>
+This would start gmail.
+</li>
+<li>
+STOREVAR variable value<br>
+Stores a variable in permanent storage. Can be retrieved with #GETVAR. Examples:<br>
+STOREVAR NAME dapaua<br>
+This would store "dapaua" as NAME.<br>
+STOREVAR MYCOUNTER $MYCOUNTER<br>
+This would store the value of $MYCOUNTER to MYCOUNTER.
+</li>
+<li>
+SETTEXT text<br>
+Sets the text for the widget.
+</li>
+<li>
+ADDTEXT text<br>
+Adds text to the existing text for the widget.
+</li>
+<li>
+REFRESH time_in_seconds<br>
+Programs the next widget refresh after a number of seconds. The script will then be reeexecuted. Example:<br>
+REFRESH 300<br>
+This would re-run the script in 5 minutes.
+
+</li>
+<li>
+UPDATE<br>
+This updates the widget. It is needed if you do any change to the widget, it is not needed if you just execute something. Can be used more than once in a script, but it is usually done at the end.
+</li>
+</ul>
+<strong>Don't forget to share your creations!</strong><br>
+
+</body>
+</html>

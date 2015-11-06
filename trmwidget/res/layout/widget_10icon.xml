@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/LinearLayoutv"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="@drawable/background_light"
+    android:orientation="vertical"
+    android:paddingTop="@dimen/padding_top"
+    android:paddingLeft="@dimen/padding_left" >
+
+<LinearLayout
+    android:id="@+id/LinearLayout01"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    >
+
+        <ImageButton
+        android:id="@+id/icon1"
+        android:layout_width="@dimen/icon_width"
+        android:layout_height="@dimen/icon_height"
+        android:background="@drawable/icon_bg"
+        android:src="@drawable/ic_launcher" />
+        
+                <ImageButton
+        android:id="@+id/icon2"
+       android:layout_width="@dimen/icon_width"
+     android:layout_height="@dimen/icon_height"
+        android:background="@drawable/icon_bg"
+        android:src="@drawable/ic_launcher" />
+    
+<!-- android:background="@android:color/transparent" -->
+
+        <ImageButton
+        android:id="@+id/icon3"
+        android:layout_width="@dimen/icon_width"
+        android:layout_height="@dimen/icon_height"
+        android:background="@drawable/icon_bg"
+        android:src="@drawable/ic_launcher" />
+        
+                <ImageButton
+        android:id="@+id/icon4"
+        android:layout_width="@dimen/icon_width"
+        android:layout_height="@dimen/icon_height"
+        android:background="@drawable/icon_bg"
+        android:src="@drawable/ic_launcher" />
+                
+                        <ImageButton
+        android:id="@+id/icon5"
+        android:layout_width="@dimen/icon_width"
+        android:layout_height="@dimen/icon_height"
+        android:background="@drawable/icon_bg"
+        android:src="@drawable/ic_launcher" />
+  
+
+
+
+</LinearLayout>
+
+<LinearLayout
+    android:id="@+id/LinearLayout02"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal" >
+
+        <ImageButton
+        android:id="@+id/icon6"
+        android:layout_width="@dimen/icon_width"
+        android:layout_height="@dimen/icon_height"
+        android:background="@drawable/icon_bg"
+        android:src="@drawable/ic_launcher" />
+        
+                <ImageButton
+        android:id="@+id/icon7"
+       android:layout_width="@dimen/icon_width"
+        android:layout_height="@dimen/icon_height"
+        android:background="@drawable/icon_bg"
+        android:src="@drawable/ic_launcher" />
+    
+<!-- android:background="@android:color/transparent" -->
+
+        <ImageButton
+        android:id="@+id/icon8"
+        android:layout_width="@dimen/icon_width"
+        android:layout_height="@dimen/icon_height"
+        android:background="@drawable/icon_bg"
+        android:src="@drawable/ic_launcher" />
+        
+                <ImageButton
+        android:id="@+id/icon9"
+        android:layout_width="@dimen/icon_width"
+        android:layout_height="@dimen/icon_height"
+        android:background="@drawable/icon_bg"
+        android:src="@drawable/ic_launcher" />
+                
+                        <ImageButton
+        android:id="@+id/icon10"
+        android:layout_width="@dimen/icon_width"
+        android:layout_height="@dimen/icon_height"
+        android:background="@drawable/icon_bg"
+        android:src="@drawable/ic_launcher" />
+  
+
+
+
+</LinearLayout>
+</LinearLayout>

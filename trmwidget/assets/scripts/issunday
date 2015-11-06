@@ -1,0 +1,37 @@
+#INFO Tells if today is sunday.
+
+function refresh {
+echo SETLAYOUT ICON_TEXT
+DAY=`date "+%w"`
+echo SETTEXT Loading...
+echo UPDATE
+
+if [[ DAY -eq 0 ]]; then
+echo "SETTEXT Sunday"
+echo SETICON OK
+else
+echo SETICON CROSS
+echo "SETTEXT Not Sunday"
+fi
+echo UPDATE
+echo REFRESH 3600
+}
+
+
+echo $1
+if [[ $1 == "REFRESH" ]]; then
+#This is caled when a refresh is needed.
+refresh
+
+fi
+
+if [[ $1 == "ICON1" ]]; then
+#This is called when icon1 is tapped
+refresh
+fi
+
+if [[ $1 == "TEXT" ]]; then
+#This is called when the text is tapped
+refresh
+fi
+

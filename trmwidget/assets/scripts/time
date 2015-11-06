@@ -1,0 +1,7 @@
+#INFO A simple clock
+TIME=`date +%H:%M`
+echo SETLAYOUT TEXT
+echo SETTEXT $TIME
+echo UPDATE
+echo REFRESH 30
+

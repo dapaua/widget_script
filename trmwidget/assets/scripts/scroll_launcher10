@@ -1,0 +1,122 @@
+#INFO A launcher with scroll - 10 icons
+#GETVAR POSITION 0
+# Now $POSITION HAS THE LAST POS.
+APP[1]=com.whatsapp
+APP[2]=com.google.android.gm
+APP[3]=com.google.android.apps.maps
+APP[4]=com.google.android.talk
+APP[5]=com.android.vending
+APP[6]=cat.ereza.apm
+APP[7]=com.google.android.apps.authenticator2
+APP[8]=com.android.chrome
+APP[9]=com.dropbox.android
+APP[10]=com.modoohut.dialer
+APP[11]=com.dapaua.widgetsoverlay
+APP[12]=nextapp.fx
+
+# Set this to half the number of apps
+NUM_APPS=6
+# Set this to the number of columns, minus two
+NUM_APP_ICONS=3
+
+function set_apps {
+# First row. It's apps 1,2,3 (4,5,6) ...
+APP1=${APP[$(($POSITION))]}
+APP2=${APP[$(($POSITION+1))]}
+APP3=${APP[$(($POSITION+2))]}
+# Second row. It's apps 7,8,9 (10,11,12) ...
+APP4=${APP[$(($POSITION+$NUM_APPS))]}          
+APP5=${APP[$(($POSITION+$NUM_APPS+1))]}   
+APP6=${APP[$(($POSITION+$NUM_APPS+2))]} 
+
+
+}
+
+function refresh {
+echo A - Pos is $POSITION
+MAX_POS=$(($NUM_APPS-$NUM_APP_ICONS+1))
+echo Max_pos is $MAX_POS
+
+if [[ $POSITION -gt $MAX_POS ]] ; then
+POSITION=$MAX_POS
+fi
+
+if [[ $POSITION -lt 1 ]] ; then
+POSITION=1
+fi
+echo B - Pos is $POSITION    
+
+echo SETLAYOUT 10ICON   
+# Here I set the arrows       
+echo SETICON LEFT 1           
+echo SETICON RIGHT 5          
+echo SETICON BLANK 6
+echo SETICON BLANK 10
+
+#And now I set the three apps.
+set_apps                            
+echo SETAPPICON $APP1 2     
+echo SETAPPICON $APP2 3     
+echo SETAPPICON $APP3 4     
+echo SETAPPICON $APP4 7               
+echo SETAPPICON $APP5 8        
+echo SETAPPICON $APP6 9 
+
+
+echo UPDATE                 
+echo REFRESH 3000 
+#Store position, it may have changed.    
+echo STOREVAR POSITION $POSITION 
+echo Pos is $POSITION
+}
+
+if [[ $1 == "REFRESH" ]]; then
+refresh
+fi
+
+if [[ $1 == "ICON2" ]]; then
+set_apps
+echo RUNAPP $APP1
+fi
+
+if [[ $1 == "ICON3" ]]; then
+set_apps
+echo RUNAPP $APP2
+
+fi
+
+if [[ $1 == "ICON4" ]]; then
+set_apps
+echo RUNAPP $APP3
+  
+fi
+
+if [[ $1 == "ICON7" ]]; then           
+set_apps                               
+echo RUNAPP $APP4                      
+fi                                     
+                                       
+if [[ $1 == "ICON8" ]]; then           
+set_apps                               
+echo RUNAPP $APP5                      
+                                       
+fi                                    
+                                      
+if [[ $1 == "ICON9" ]]; then          
+set_apps                             
+echo RUNAPP $APP6                    
+                                     
+fi   
+
+
+if [[ $1 == "ICON1" ]]; then
+POSITION=$(($POSITION-1))          
+refresh                            
+fi                          
+                            
+if [[ $1 == "ICON5" ]]; then
+POSITION=$(($POSITION+1))   
+refresh            
+                            
+fi 
+

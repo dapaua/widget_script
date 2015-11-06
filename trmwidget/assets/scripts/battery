@@ -1,0 +1,7 @@
+#INFO A simple battery widget
+BAT=${NW_BATTERY}%
+echo SETLAYOUT TEXT
+echo SETTEXT $BAT
+echo UPDATE
+echo REFRESH 300
+

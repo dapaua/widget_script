@@ -1,0 +1,19 @@
+#INFO Lets you know if you have internet connection
+echo SETLAYOUT ICON_TEXT
+echo SETTEXT Checking...
+echo UPDATE
+
+ping -c 1 www.google.com >/dev/null
+OUT=$?
+if [[ $OUT -eq 0 ]]; then
+echo SETTEXT Connection OK
+echo SETICON OK
+else
+echo SETTEXT "Can't connect"
+echo SETICON CROSS
+fi
+
+
+
+echo UPDATE
+echo REFRESH 120

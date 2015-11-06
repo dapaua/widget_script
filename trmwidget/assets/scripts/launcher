@@ -1,0 +1,45 @@
+#INFO A five icon launcher
+APP1=com.whatsapp
+APP2=com.google.android.gm
+APP3=com.google.android.apps.maps
+APP4=com.google.android.talk
+APP5=com.android.vending
+
+
+if [[ $1 == "REFRESH" ]]; then
+echo SETLAYOUT 5ICON
+echo SETAPPICON $APP1
+echo SETAPPICON $APP2 2
+echo SETAPPICON $APP3 3
+echo SETAPPICON $APP4 4
+echo SETAPPICON $APP5 5
+echo UPDATE
+echo REFRESH 3000
+fi
+
+if [[ $1 == "ICON1" ]]; then
+echo RUNAPP $APP1
+fi
+
+if [[ $1 == "ICON2" ]]; then
+echo RUNAPP $APP2
+
+fi
+
+if [[ $1 == "ICON3" ]]; then
+echo RUNAPP $APP3
+  
+fi
+
+
+
+if [[ $1 == "ICON4" ]]; then
+echo RUNAPP $APP4           
+                            
+fi                          
+                            
+if [[ $1 == "ICON5" ]]; then
+echo RUNAPP $APP5           
+                            
+fi 
+

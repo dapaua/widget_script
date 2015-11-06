@@ -1,0 +1,29 @@
+#INFO A simple counter
+# This line gets the variable counter from storage. If not defined, set to "0"
+
+#GETVAR COUNTER 0
+
+function refresh {
+echo SETLAYOUT ICON_TEXT_ICON
+echo SETICON LEFT 1
+echo SETICON RIGHT 2
+echo SETTEXT $COUNTER
+echo UPDATE
+
+
+echo STOREVAR COUNTER $COUNTER
+}
+
+if [[ $1 == "REFRESH" ]]; then
+refresh 
+fi
+
+if [[ $1 == "ICON1" ]]; then
+COUNTER=$(($COUNTER-1))
+refresh
+fi
+
+if [[ $1 == "ICON2" ]]; then
+COUNTER=$(($COUNTER+1))
+refresh
+fi

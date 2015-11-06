@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/LinearLayout01"
+    android:layout_height="fill_parent"
+    android:background="@drawable/background_light"
+    android:layout_width="fill_parent"
+    android:orientation="horizontal">
+
+    <TextView
+        android:id="@+id/main_text"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:gravity="top|left"
+        android:text=""
+        android:textColor="@android:color/white"
+        android:textSize="3pt"
+        android:typeface="monospace" 
+        android:shadowColor="@android:color/black"
+                  android:shadowDx="1"
+                  android:shadowDy="1"
+                  android:shadowRadius="2"
+        />
+
+</LinearLayout>
